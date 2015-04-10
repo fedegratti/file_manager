@@ -1,0 +1,82 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+	<package name="default" extends="hibernate-default">
+
+		<action name="addUser" method="create" class="com.flux.action.UserAction">
+			<result name="success">/addUser.jsp</result>
+		</action>
+		<action name="saveUser" method="save" class="com.flux.action.UserAction">
+			<result name="success" type="redirect">listUsers</result>
+		</action>
+		<action name="listUsers" method="list" class="com.flux.action.UserAction">
+			<result name="success">/listUsers.jsp</result>
+		</action>
+		<action name="editUser" method="edit" class="com.flux.action.UserAction">
+			<result name="success">/addUser.jsp</result>
+		</action>
+		<action name="deleteUser" method="delete" class="com.flux.action.UserAction">
+			<result name="success" type="redirect">listUsers</result>
+			<result name="input" type="redirect">addUser</result>
+		</action>
+
+
+		<action name="addUserGroup" method="create"
+			class="com.flux.action.UserGroupAction">
+			<result name="success">/addUserGroup.jsp</result>
+		</action>
+		<action name="saveUserGroup" method="save"
+			class="com.flux.action.UserGroupAction">
+			<result name="success" type="redirect">listUserGroups</result>
+		</action>
+		<action name="listUserGroups" method="list"
+			class="com.flux.action.UserGroupAction">
+			<result name="success">/listUserGroups.jsp</result>
+		</action>
+		<action name="editUserGroup" method="edit"
+			class="com.flux.action.UserGroupAction">
+			<result name="success">/addUserGroup.jsp</result>
+		</action>
+		<action name="deleteUserGroup" method="delete"
+			class="com.flux.action.UserGroupAction">
+			<result name="success" type="redirect">listUserGroups</result>
+		</action>
+
+
+		<action name="addDocument" method="create"
+			class="com.flux.action.DocumentAction">
+			<result name="success">/addDocument.jsp</result>
+		</action>
+		<action name="saveDocument" method="save"
+			class="com.flux.action.DocumentAction">
+			<result name="success" type="redirect">listDocuments</result>
+		</action>
+		<action name="listDocuments" method="list"
+			class="com.flux.action.DocumentAction">
+			<result name="success">/listDocuments.jsp</result>
+		</action>
+		<action name="editDocument" method="edit"
+			class="com.flux.action.DocumentAction">
+			<result name="success">/addDocument.jsp</result>
+		</action>
+		<action name="deleteDocument" method="delete"
+			class="com.flux.action.DocumentAction">
+			<result name="success" type="redirect">listDocuments</result>
+		</action>
+		<action name="searchDocument" method="search"
+			class="com.flux.action.DocumentAction">
+			<result name="success">/listDocuments.jsp</result>
+		</action>
+		<action name="downloadDocument" method="download"
+			class="com.flux.action.DocumentAction">
+			<result name="success" type="stream">
+				<param name="contentDisposition">attachment;filename=${docFileName}</param>
+				<param name="inputName">docInputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+	</package>
+</struts>
